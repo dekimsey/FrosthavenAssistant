@@ -1,5 +1,5 @@
 # Specify the Dart SDK base image version using dart:<version> (ex: dart:2.12)
-FROM dart:stable AS build
+FROM dart:3.4-sdk AS build
 
 # Resolve app dependencies.
 WORKDIR /app

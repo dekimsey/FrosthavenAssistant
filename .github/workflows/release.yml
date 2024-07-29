@@ -7,6 +7,8 @@ on:
       - v[0-9]+.[0-9]+.[0-9]+-*
     branches:
       - main
+      # FIXME: Remove pre-merge, used to test on fork.
+      - gha-docker-release-pipeline
   pull_request:
     paths:
       - frosthaven_assistant_server

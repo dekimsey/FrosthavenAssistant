@@ -32,7 +32,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY_IMAGE }}
+          # FIXME: Added the `event=branch` entry to test this PR. Remove
           tags: |
+            type=ref,event=pr
+            type=ref,event=branch
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
             type=edge,branch=main
@@ -58,4 +61,5 @@ jobs:
             ./docker-bake.hcl
             ${{ steps.meta.outputs.bake-file }}
           targets: server-all
-          push: true
+          load: true
+          push: ${{ github.event_name != 'pull_request' }}
